@@ -1,6 +1,9 @@
 package library;
+import apis.ColaTDA;
 import apis.ConjuntoTDA;
+import apis.PilaTDA;
 import impl.ConjuntoLD;
+import impl.PilaLD;
 
 public class conjuntoHelper {
     public static ConjuntoTDA interseccion(ConjuntoTDA conjuntoA, ConjuntoTDA conjuntoB) {
@@ -17,6 +20,10 @@ public class conjuntoHelper {
         }
 
         return resultado;
+    }
+
+    public static ConjuntoTDA copiarConjunto(ConjuntoTDA conj){
+        return conj;
     }
 
     public static ConjuntoTDA union(ConjuntoTDA conjuntoA, ConjuntoTDA conjuntoB) {
@@ -52,13 +59,6 @@ public class conjuntoHelper {
         }
 
         return resultado;
-    }
-
-    public static ConjuntoTDA diferenciaSimetrica(ConjuntoTDA conjuntoA, ConjuntoTDA conjuntoB) {
-        ConjuntoTDA union = union(conjuntoA, conjuntoB);
-        ConjuntoTDA interseccion = interseccion(conjuntoA, conjuntoB);
-
-        return diferencia(union, interseccion);
     }
 
     public static ConjuntoTDA diferenciaSimetrica(ConjuntoTDA conjuntoA, ConjuntoTDA conjuntoB) {
@@ -112,18 +112,18 @@ public class conjuntoHelper {
 
         return cardinalidad;
     }
-
+    /*
     public static ConjuntoTDA elementosEnComun(PilaTDA pila, ColaTDA cola) {
-        ConjuntoTDA conjuntoElementos = new MiConjunto(); // Creamos un conjunto para almacenar los elementos
+        ConjuntoTDA conjuntoElementos = new ConjuntoLD(); // Creamos un conjunto para almacenar los elementos
 
-        PilaTDA pilaAuxiliar = new MiPila(); // Creamos una pila auxiliar
+        PilaTDA pilaAuxiliar = new PilaLD(); // Creamos una pila auxiliar
 
         while (!pila.pilaVacia()) {
             int elemento = pila.tope();
             pilaAuxiliar.apilar(elemento);
             pila.desapilar();
 
-            if (cola.pertenece(elemento)) {
+            if (cola.(elemento)) {
                 conjuntoElementos.agregar(elemento);
             }
         }
@@ -137,11 +137,15 @@ public class conjuntoHelper {
 
         return conjuntoElementos;
     }
+    */
+
 
 
     public static boolean elementosSonIguales(PilaTDA pila, ColaTDA cola) {
-        ConjuntoTDA conjuntoPila = new MiConjunto();
-        ConjuntoTDA conjuntoCola = new MiConjunto();
+        ConjuntoTDA conjuntoPila = new ConjuntoLD();
+        conjuntoPila.inicializarConjunto();
+        ConjuntoTDA conjuntoCola = new ConjuntoLD();
+        conjuntoCola.inicializarConjunto();
 
         // Agregamos los elementos de la pila al conjunto de la pila
         while (!pila.pilaVacia()) {
@@ -160,6 +164,16 @@ public class conjuntoHelper {
         // Verificamos si los conjuntos son iguales
         return conjuntosSonIguales(conjuntoPila, conjuntoCola);
     }
+
+
+    public static void printConjunto(ConjuntoTDA conjunto){
+        while (!conjunto.conjuntoVacio()){
+            int valor = conjunto.elegir();
+            System.out.println(valor);
+            conjunto.sacar(valor);
+        }
+    }
+
 
 
 

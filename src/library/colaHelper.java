@@ -237,6 +237,14 @@ public class colaHelper {
         return conjuntoRepetidos;
     }
 
+    public static void printCola(ColaTDA cola){
+        while (!cola.colaVacia()){
+            int valor = cola.primero();
+            System.out.println(valor);
+            cola.desacolar();
+        }
+    }
+
 
 
 

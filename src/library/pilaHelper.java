@@ -1,5 +1,7 @@
 package library;
+import apis.ConjuntoTDA;
 import apis.PilaTDA;
+import impl.ConjuntoLD;
 import impl.PilaLD;
 public class pilaHelper {
     public static void pasarPila(PilaTDA pilaOrigen, PilaTDA pilaDestino) {
@@ -78,7 +80,7 @@ public class pilaHelper {
     public static int sumarElementos(PilaTDA pila) {
         int suma = 0;
 
-        PilaTDA pilaAuxiliar = new MiPila(); // Creamos una pila auxiliar
+        PilaTDA pilaAuxiliar = new PilaLD(); // Creamos una pila auxiliar
 
         while (!pila.pilaVacia()) {
             int elemento = pila.tope();
@@ -101,7 +103,7 @@ public class pilaHelper {
         int suma = 0;
         int contador = 0;
 
-        PilaTDA pilaAuxiliar = new MiPila(); // Creamos una pila auxiliar
+        PilaTDA pilaAuxiliar = new PilaLD(); // Creamos una pila auxiliar
 
         while (!pila.pilaVacia()) {
             int elemento = pila.tope();
@@ -126,7 +128,7 @@ public class pilaHelper {
     }
 
     public static boolean esCapicua(PilaTDA pila) {
-        PilaTDA pilaAuxiliar = new MiPila(); // Creamos una pila auxiliar
+        PilaTDA pilaAuxiliar = new PilaLD(); // Creamos una pila auxiliar
         boolean capicua = true;
 
         // Invertir la pila y almacenarla en la pila auxiliar
@@ -160,8 +162,8 @@ public class pilaHelper {
     }
 
     public static void eliminarRepeticiones(PilaTDA pila) {
-        PilaTDA pilaAuxiliar = new MiPila(); // Creamos una pila auxiliar
-        ConjuntoTDA conjuntoElementos = new MiConjunto(); // Creamos un conjunto para almacenar los elementos
+        PilaTDA pilaAuxiliar = new PilaLD(); // Creamos una pila auxiliar
+        ConjuntoTDA conjuntoElementos = new ConjuntoLD(); // Creamos un conjunto para almacenar los elementos
 
         while (!pila.pilaVacia()) {
             int elemento = pila.tope();
@@ -183,8 +185,15 @@ public class pilaHelper {
         }
     }
 
+    public static void printPila(PilaTDA pila){
+        while(!pila.pilaVacia()){
+            System.out.println(pila.tope());
+            pila.desapilar();
+        }
+    }
+    /*
     public static void repartirEnMitades(PilaTDA pila, PilaTDA m1, PilaTDA m2) {
-        PilaTDA pilaAuxiliar = new MiPila(); // Creamos una pila auxiliar
+        PilaTDA pilaAuxiliar = new PilaLD(); // Creamos una pila auxiliar
 
         int mitad = pila.tamanio() / 2; // Obtener la mitad del tamaño de la pila
 
@@ -209,6 +218,8 @@ public class pilaHelper {
             pila.desapilar();
         }
 
+     */
+    /*
         public static ConjuntoTDA elementosRepetidos(PilaTDA pila) {
             ConjuntoTDA conjuntoElementos = new MiConjunto(); // Creamos un conjunto para almacenar los elementos
             ConjuntoTDA conjuntoRepetidos = new MiConjunto(); // Creamos un conjunto para almacenar los elementos repetidos
@@ -236,7 +247,9 @@ public class pilaHelper {
             return conjuntoRepetidos;
         }
 
-    }
+     */
+
+
 
 
 
